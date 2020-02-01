@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppareilService } from './services/appareil.service';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent {
 
   isAuth = false;
-  appareilOne = "Robot cuisine";
-  appareilTwo = "Machine a laver";
-  appareilThree = "Lave vaisselle";
 
-appareils: any[];
+  
+  appareils: any[];
 
-  constructor() {
+  constructor(private appareilsServices: AppareilService) {
     setTimeout(
       () => {
         this.isAuth = true;
@@ -23,8 +22,21 @@ appareils: any[];
 
   }
 
-  onAllumer(): void {
-
+  ngOnInit(){
+    this.appareils = this.appareilsServices.appareils;
   }
+
+  onAllumer(): void {
+this.appareilsServices.switchOnAll();
+  }
+
+  onEteindre(){
+    if(confirm('Etes-vous sur de vouloir éteindre tous vos appareils ?')){
+      this.appareilsServices.switchOffAll();
+    } else {
+      return null;
+    }
+  }
+
 
 }
