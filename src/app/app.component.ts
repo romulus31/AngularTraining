@@ -12,6 +12,8 @@ export class AppComponent {
   appareilTwo = "Machine a laver";
   appareilThree = "Lave vaisselle";
 
+appareils: any[];
+
   constructor() {
     setTimeout(
       () => {
