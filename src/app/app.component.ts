@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my awesome project !';
+
+  isAuth = false;
+  appareilOne = "Robot cuisine";
+  appareilTwo = "Machine a laver";
+  appareilThree = "Lave vaisselle";
+
+  constructor() {
+    setTimeout(
+      () => {
+        this.isAuth = true;
+      }, 4000
+    );
+
+  }
+
+  onAllumer(): void {
+
+  }
+
 }
